@@ -29,10 +29,12 @@ pub struct MapBuilder {
 
 impl MapBuilder {
     pub fn new(rng: &mut RandomNumberGenerator) -> Self {
-        // let mut architect = CellularAutomataArchitect {};
+        // let mut architect = RoomsArchitect {};
         // architect.new(rng)
-        let mut architect = DrunkardsWalkArchitect{};
+        let mut architect = CellularAutomataArchitect {};
         architect.new(rng)
+        // let mut architect = DrunkardsWalkArchitect{};
+        // architect.new(rng)
     }
 
     // pub fn new(rng: &mut RandomNumberGenerator) -> Self {
