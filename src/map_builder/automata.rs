@@ -11,6 +11,7 @@ impl MapArchitect for CellularAutomataArchitect {
             monster_spawns: Vec::new(),
             player_start: Point::zero(),
             amulet_start: Point::zero(),
+            theme: super::themes::DungeonTheme::new()
         };
         self.random_noise_map(rng, &mut mb.map);
         for _ in 0..10 {
@@ -84,22 +85,23 @@ impl CellularAutomataArchitect {
         map.index_to_point2d(closest_point)
     }
 
-    fn new(&mut self, rng: &mut RandomNumberGenerator) -> MapBuilder {
-        let mut mb = MapBuilder {
-            map: Map::new(),
-            rooms: Vec::new(),
-            monster_spawns: Vec::new(),
-            player_start: Point::zero(),
-            amulet_start: Point::zero(),
-        };
-        self.random_noise_map(rng, &mut mb.map);
-        for _ in 0..10 {
-            self.iteration(&mut mb.map);
-        }
-        let start = self.find_start(&mb.map);
-        mb.monster_spawns = mb.spawn_monsters(&start, rng);
-        mb.player_start = start;
-        mb.amulet_start = mb.find_most_distant();
-        mb
-    }
+    // fn new(&mut self, rng: &mut RandomNumberGenerator) -> MapBuilder {
+    //     let mut mb = MapBuilder {
+    //         map: Map::new(),
+    //         rooms: Vec::new(),
+    //         monster_spawns: Vec::new(),
+    //         player_start: Point::zero(),
+    //         amulet_start: Point::zero(),
+    //         theme: super::themes::DungeonTheme::new()
+    //     };
+    //     self.random_noise_map(rng, &mut mb.map);
+    //     for _ in 0..10 {
+    //         self.iteration(&mut mb.map);
+    //     }
+    //     let start = self.find_start(&mb.map);
+    //     mb.monster_spawns = mb.spawn_monsters(&start, rng);
+    //     mb.player_start = start;
+    //     mb.amulet_start = mb.find_most_distant();
+    //     mb
+    // }
 }
