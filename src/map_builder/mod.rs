@@ -19,7 +19,7 @@ mod themes;
 use themes::*;
 
 // NUM OF ROOMS TEST
-const NUM_ROOMS: usize = 5;
+const NUM_ROOMS: usize = 3;
 
 trait MapArchitect {
     fn new(&mut self, rng: &mut RandomNumberGenerator) -> MapBuilder;
@@ -36,16 +36,16 @@ pub struct MapBuilder {
 
 impl MapBuilder {
     // pub fn new(rng: &mut RandomNumberGenerator) -> Self {
-        // let mut architect = RoomsArchitect {};
-        // architect.new(rng)
-        // let mut architect = CellularAutomataArchitect {};
-        // architect.new(rng)
-        // let mut architect = DrunkardsWalkArchitect{};
-        // architect.new(rng)
+    //     // let mut architect = RoomsArchitect {};
+    //     // architect.new(rng)
+    //     // let mut architect = CellularAutomataArchitect {};
+    //     // architect.new(rng)
+    //     // let mut architect = DrunkardsWalkArchitect{};
+    //     // architect.new(rng)
     // }
 
     pub fn new(rng: &mut RandomNumberGenerator) -> Self {
-        let mut architect : Box<dyn MapArchitect> = match rng.range(0, 3) {
+        let mut architect : Box<dyn MapArchitect> = match rng.range(1, 2) {
             0 => Box::new(DrunkardsWalkArchitect{}),
             1 => Box::new(RoomsArchitect{}),
             _ => Box::new(CellularAutomataArchitect{})
