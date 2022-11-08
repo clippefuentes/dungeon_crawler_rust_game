@@ -53,10 +53,11 @@ impl State {
         //     .skip(1)
         //     .map(|r| r.center())
         //     .for_each(|pos| spawn_monster(&mut ecs, &mut rng, pos));
-        map_builder
-            .monster_spawns
-            .iter()
-            .for_each(|pos| spawn_monster(&mut ecs, &mut rng, *pos));
+        // map_builder
+        //     .monster_spawns
+        //     .iter()
+        //     .for_each(|pos| spawn_monster(&mut ecs, &mut rng, *pos));
+        spawn_level(&mut ecs, &mut rng, 0, &map_builder.monster_spawns);
 
         resources.insert(map_builder.map);
         resources.insert(Camera::new(map_builder.player_start));
